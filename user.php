@@ -6,13 +6,12 @@ if (isset($_POST['submit'])) {
 // Parcourt le tableau des cookies
 function CKdelete()
 {
+
     foreach ($_COOKIE as $cookie_name => $cookie_value) {
 
-        // Commence par supprimer la valeur du cookie
-        unset($_COOKIE[$cookie_name]);
         // Puis désactive le cookie en lui fixant 
         // une date d'expiration dans le passé
-        setcookie($cookie_name, '', time() - 40000200, '/');
+        setcookie($cookie_name, '', time() - 4200);
     }
 };
 ?>
@@ -77,7 +76,7 @@ function CKdelete()
     </div>
     <form action="user.php" method="post">
         <div class="d-grid gap-2 mx-auto">
-            <a href="./index.php"><button class="btn btn-primary d-grid gap-2 mx-auto" type="submit">Effacer toutes traces</button></a>
+            <a href="./index.php"><button class="btn btn-primary d-grid gap-2 mx-auto" type="submit" name="submit">Effacer toutes traces</button></a>
             <a href="https://imgur.com/Gc7IFzZ"><button class="btn btn-primary d-grid gap-2  mx-auto" type="button">Shut up and take my money</button></a>
         </div>
     </form>
