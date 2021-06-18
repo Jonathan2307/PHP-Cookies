@@ -89,27 +89,31 @@ if (isset($_COOKIE['CKfirstname'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <title>Love Machine</title>
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Niconne&display=swap" rel="stylesheet">
+    <title>Math.random.com</title>
 </head>
 
 <body>
+<h1>Math.random(x,y).com</h1>
+    <h2 class="text">Faites votre inscription</h2>
     <div id="form">
         <div class="container-fluid ">
-            <h1 class="text-center">Pre inscription</h1>
             <form action="index.php" method="post">
-                <div class="form-floating mb-3 col-sm-8 col-md-7 col-lg-6 mx-auto">
+                <div class="form-floating mb-3 col-sm-8 col-md-7 col-lg-4 ">
                     <input class="form-control <?= $valid['firstname'] ?? null ?>" type="text" name="firstname" id="firstname" placeholder="Your firstname" value="<?= $firstname ?? null ?> " required>
                     <label for="firstname">Your firstname</label>
                     <span class="fst-italic text-danger fs-6"><?= $errorArray['firstname'] ?? null ?></span>
 
                 </div>
-                <div class="form-floating mb-3 col-sm-8 col-md-7 col-lg-6 mx-auto">
+                <div class="form-floating mb-3 col-sm-8 col-md-7 col-lg-4 ">
                     <input class="form-control <?= $valid['lastname'] ?? null ?>" type="text" name="lastname" id="lastname" placeholder="Your lastname" value="<?= $lastname ?? null ?> " required>
                     <label for="lastname">Your lastname</label>
                     <span class="fst-italic text-danger fs-6"><?= $errorArray['lastname'] ?? null  ?></span>
 
                 </div>
-                <div class="form-floating mb-3 col-sm-8 col-md-7 col-lg-6 mx-auto">
+                <div class="form-floating mb-3 col-sm-8 col-md-7 col-lg-4 ">
                     <input class="form-control <?= $valid['age'] ?? null ?>" type="text" name="age" id="age" placeholder="Your age" required value="<?= $age ?? null ?> ">
                     <label for="age">Your age</label>
                     <span class="fst-italic text-danger fs-6"><?= $errorArray['age'] ?? null  ?></span>
@@ -117,7 +121,7 @@ if (isset($_COOKIE['CKfirstname'])) {
                 </div>
 
 
-                <div class="mb-3 col-sm-8 col-md-7 col-lg-6 mx-auto d-flex justify-content-center">Vous êtes :
+                <div class="mb-3 col-sm-8 col-md-7 col-lg-4  d-flex justify-content-center">Vous êtes :
                     <div class="d-flex">
                         <div class="mx-2">
                             <input class="form-check-input" name='ugender' type="radio" value="male" checked="checked">
@@ -130,21 +134,21 @@ if (isset($_COOKIE['CKfirstname'])) {
                     </div>
                 </div>
 
-                <div class="form-floating mb-3 col-sm-8 col-md-7 col-lg-6 mx-auto">
+                <div class="form-floating mb-3 col-sm-8 col-md-7 col-lg-4 ">
                     <input class="form-control <?= $valid['codePost'] ?? null ?>" type="text" name="codePost" id="codePost" placeholder="Your post code" required value="<?= $codePost ?? null ?> ">
                     <label for="codePost">Your post code in 5 digit</label>
                     <span class="fst-italic text-danger fs-6"><?= $errorArray['codePost'] ?? null ?></span>
 
 
                 </div>
-                <div class="form-floating mb-3 col-sm-8 col-md-7 col-lg-6 mx-auto">
+                <div class="form-floating mb-3 col-sm-8 col-md-7 col-lg-4 ">
                     <input class="form-control <?= $valid['email'] ?? null ?>" type="mail" name="email" id="email" placeholder="Your email" value="<?= $email ?? '' ?> " required>
                     <label for="email">Your email</label>
                     <span class="fst-italic text-danger fs-6"><?= $errorArray['email'] ?? null ?></span>
 
 
                 </div>
-                <div class="mb-3 col-sm-8 col-md-7 col-lg-6 mx-auto d-flex justify-content-center">Vous recherchez :
+                <div class="mb-3 col-sm-8 col-md-7 col-lg-4  d-flex justify-content-center">Vous recherchez :
                     <div class="d-flex">
                         <div class="mx-2">
                             <input class="form-check-input" name='searchGender' type="radio" value="male">
@@ -158,7 +162,7 @@ if (isset($_COOKIE['CKfirstname'])) {
                 </div>
         </div>
     </div>
-    <div class="col-6 text-center mx-auto">
+    <div class="col-4">
         <input class="btn col-sm-8 col-md-7 col-lg-8 btn-primary" type="submit" id="submit" value="Rencontrer nos célibataires" name="submit">
         </form>
     </div>

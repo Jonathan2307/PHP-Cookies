@@ -1,0 +1,40 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body {
+    background: url("../img/accueil.jpg");
+    background-size: cover;
+}
+h2 {
+    color: whitesmoke;
+    margin-left: 13%;
+    margin-top: 5%;
+}
+#submit {
+    margin-left: 30%;
+    margin-top: 5%;
+}
+.mb-3 {
+    color: whitesmoke;
+    font-size: 1.5rem;
+}
+form {
+    margin-top: 2%;
+    margin-left: 5%;
+}
+h1 {
+    color:rgb(223, 100, 151);
+    margin-left: 5%;
+    margin-top: 2%;
+    font-family: 'Niconne', cursive;
+    font-size: 5rem;
+}
+label {
+    color: black;
+}
+.form-check-label {
+    color:whitesmoke;
+    font-size: 1.5rem;
+}
