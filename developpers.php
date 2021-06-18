@@ -1,10 +1,24 @@
 <?php
+//controle a l'entree pour eviter de visiter la page sans inscription
+if (!isset($_COOKIE['CKfirstname'])) {
+    header('Location: ./index.php');
+};
 //file_get_content permet de récupérer le fichier json 
 $json = file_get_contents("assets/json/members.json");
 //decode  permet de récupérer une chaîne encodée en JSON et de la convertir en une variable PHP 
 $parsed_json = json_decode($json);
 $membersArray = $parsed_json->members;
 
+
+//fonction permettant de traduire le genre pour le front
+function myGender()
+{
+    if ($_COOKIE['CKsearchGender'] == 'female') {
+        print('femme');
+    } else {
+        print('homme');
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,9 +34,11 @@ $membersArray = $parsed_json->members;
 <body>
     <div id="navBar">
         <ul>
-            <li>Bonjour <? $name ?></li>
+            <li>Bonjour <?= $_COOKIE['CKfirstname'] ?? null ?></li>
             <li>NOS CELIBATAIRES</li>
-            <li>INSCRIPTION</li>
+            <a href="./index.php">
+                <li>INSCRIPTION</li>
+            </a>
         </ul>
     </div>
     <div id="main">
@@ -37,12 +53,12 @@ $membersArray = $parsed_json->members;
                     <div class="column">
                         <div class="titre"><?= $value->firstname . " " . $value->lastname ?></div>
                         <div class="genreAge">
-                            <div class="conteneurEtoil"><?= $value->gender ?></div>
-                            <div class="rate"><?= $value->age ?></div>
+                            <div class="conteneurEtoil"><?= myGender() ?></div>
+                            <div class="rate">&nbsp;<?= $value->age ?>&nbsp;</div>
                         </div>
-                        <div class="texte"><span>description :</span><?= $value->description ?></div>
+                        <div class="texte"><span>description:&nbsp; </span><?= $value->description ?></div>
                         <div class="noteInteger"><?= $value->mail ?></div>
-                        <div class="codePostal"> code postal :<?= $value->zipcode ?></div>
+                        <div class="codePostal">code postal:&nbsp; <?= $value->zipcode ?></div>
                         <button type="button">Like</button>
                     </div>
                 </div>
@@ -51,13 +67,6 @@ $membersArray = $parsed_json->members;
         }
         ?>
     </div>
-
-
-
-    <!-- <script src="assets/js/script.js"></script> -->
-    <script>
-        console.log(document.querySelectorAll("#content"))
-    </script>
 </body>
 
 </html>

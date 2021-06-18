@@ -24,7 +24,6 @@ ul{
     display: flex;
     list-style: none;
     justify-content: space-around;
-    
 }
 li {
     width: 20%;
@@ -70,9 +69,18 @@ span {
     margin-bottom: 5%;
 }
 .column {
-    margin-top: 8%;
+    margin-top: 5%;
     margin-left: 3%;
 }
 .codePostal {
     margin-top: 5%;
+}
+button {
+    margin-top: 4%;
+    height: 40px;
+    width: 60px;
+    color: aliceblue;
+    background: rgb(0, 174, 255);
+    border-radius: 20%;
+    font-size: 1.3rem;
 }

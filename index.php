@@ -1,11 +1,15 @@
 <?php
+
+//definition des regex
 $regexName = '/^[a-zA-Z]+$/';
 $regexMail = '/^[a-z0-9._-]+@[a-z0-9.-]{2,}[.][a-z]{2,3}$/';
 $regexCP = '/^[0-9]{5}$/';
-$redirect = 4;
+
+//tableau de gestion des erreurs
 $errorArray = array();
 $valid = array();
 
+//au submit du formulaire
 if (isset($_POST['submit'])) {
     $firstname = trim(htmlspecialchars($_POST['firstname']));
     $lastname = trim(htmlspecialchars($_POST['lastname']));
@@ -55,8 +59,6 @@ if (isset($_POST['submit'])) {
         $valid['email'] = 'is-valid';
     };
 
-    var_dump($errorArray);
-
     if (empty($errorArray)) {
 
         //creation des cookies pour 24h
@@ -68,15 +70,15 @@ if (isset($_POST['submit'])) {
         setcookie('CKemail', $email, time() + 24 * 3600);
         setcookie('CKsearchGender', $searchGender, time() + 24 * 3600);
 
+
         extract($_POST);
         header("Location: ./developpers.php");
     }
 };
-
+//avec cookie firstname present, on renvoie sur user.php
 if (isset($_COOKIE['CKfirstname'])) {
     header('Location: ./user.php');
 };
-
 ?>
 
 <!DOCTYPE html>
@@ -92,36 +94,36 @@ if (isset($_COOKIE['CKfirstname'])) {
 
 <body>
     <div id="form">
-        <div class="container-fluid">
+        <div class="container-fluid ">
             <h1 class="text-center">Pre inscription</h1>
             <form action="index.php" method="post">
-                <div class="form-floating mb-3 col-sm-8 col-md-7 col-lg-6  mx-auto">
+                <div class="form-floating mb-3 col-sm-8 col-md-7 col-lg-6 mx-auto">
                     <input class="form-control <?= $valid['firstname'] ?? null ?>" type="text" name="firstname" id="firstname" placeholder="Your firstname" value="<?= $firstname ?? null ?> " required>
                     <label for="firstname">Your firstname</label>
-                    <span class="text-danger"><?= $errorArray['firstname'] ?? null ?></span>
+                    <span class="fst-italic text-danger fs-6"><?= $errorArray['firstname'] ?? null ?></span>
 
                 </div>
                 <div class="form-floating mb-3 col-sm-8 col-md-7 col-lg-6 mx-auto">
                     <input class="form-control <?= $valid['lastname'] ?? null ?>" type="text" name="lastname" id="lastname" placeholder="Your lastname" value="<?= $lastname ?? null ?> " required>
                     <label for="lastname">Your lastname</label>
-                    <span class="text-danger"><?= $errorArray['lastname'] ?? null  ?></span>
+                    <span class="fst-italic text-danger fs-6"><?= $errorArray['lastname'] ?? null  ?></span>
 
                 </div>
                 <div class="form-floating mb-3 col-sm-8 col-md-7 col-lg-6 mx-auto">
                     <input class="form-control <?= $valid['age'] ?? null ?>" type="text" name="age" id="age" placeholder="Your age" required value="<?= $age ?? null ?> ">
                     <label for="age">Your age</label>
-                    <span class="text-danger"><?= $errorArray['age'] ?? null  ?></span>
+                    <span class="fst-italic text-danger fs-6"><?= $errorArray['age'] ?? null  ?></span>
 
                 </div>
 
 
                 <div class="mb-3 col-sm-8 col-md-7 col-lg-6 mx-auto d-flex justify-content-center">Vous êtes :
                     <div class="d-flex">
-                        <div class="mx-1">
+                        <div class="mx-2">
                             <input class="form-check-input" name='ugender' type="radio" value="male" checked="checked">
                             <label class="form-check-label" for="ugender">Homme</label>
                         </div>
-                        <div>
+                        <div class="mx-2">
                             <input class="form-check-input" name='ugender' type="radio" value="female">
                             <label class="form-check-label" for="ugender">Femme</label>
                         </div>
@@ -131,24 +133,24 @@ if (isset($_COOKIE['CKfirstname'])) {
                 <div class="form-floating mb-3 col-sm-8 col-md-7 col-lg-6 mx-auto">
                     <input class="form-control <?= $valid['codePost'] ?? null ?>" type="text" name="codePost" id="codePost" placeholder="Your post code" required value="<?= $codePost ?? null ?> ">
                     <label for="codePost">Your post code in 5 digit</label>
-                    <span class="text-danger"><?= $errorArray['codePost'] ?? null ?></span>
+                    <span class="fst-italic text-danger fs-6"><?= $errorArray['codePost'] ?? null ?></span>
 
 
                 </div>
                 <div class="form-floating mb-3 col-sm-8 col-md-7 col-lg-6 mx-auto">
                     <input class="form-control <?= $valid['email'] ?? null ?>" type="mail" name="email" id="email" placeholder="Your email" value="<?= $email ?? '' ?> " required>
                     <label for="email">Your email</label>
-                    <span class="text-danger"><?= $errorArray['email'] ?? null ?></span>
+                    <span class="fst-italic text-danger fs-6"><?= $errorArray['email'] ?? null ?></span>
 
 
                 </div>
                 <div class="mb-3 col-sm-8 col-md-7 col-lg-6 mx-auto d-flex justify-content-center">Vous recherchez :
                     <div class="d-flex">
-                        <div class="mx-1">
+                        <div class="mx-2">
                             <input class="form-check-input" name='searchGender' type="radio" value="male">
                             <label class="form-check-label" for="searchGender">Homme</label>
                         </div>
-                        <div>
+                        <div class="mx-2">
                             <input class="form-check-input" name='searchGender' type="radio" value="female" checked="checked">
                             <label class="form-check-label" for="searchGender">Femme</label>
                         </div>

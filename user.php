@@ -1,26 +1,45 @@
 <?php
 
-// user.php
-if (isset($_COOKIE['CKfirstname'])) {
-    header('Location: ./user.php');
+//controle a l'entree pour eviter de visiter la page sans inscription
+if (!isset($_COOKIE['CKfirstname'])) {
+    header('Location: ./index.php');
 };
 
+//au submit on declenche la fonction CKdelete et on redirige vers l'index
 if (isset($_POST['submit'])) {
     CKdelete();
     header("Location: ./index.php");
 };
-// Parcourt le tableau des cookies
+
+// fonction pour supprimer les cookies
 function CKdelete()
 {
-
+    //Parcourt le tableau des cookies
     foreach ($_COOKIE as $cookie_name => $cookie_value) {
-
         // Puis désactive le cookie en lui fixant 
         // une date d'expiration dans le passé
         setcookie($cookie_name, '', time() - 4200);
     }
 };
 
+//fonction permettant de traduire le genre pour le front
+function mySearchGenre()
+{
+    if ($_COOKIE['CKsearchGender'] == 'female') {
+        print('une femme');
+    } else {
+        print('un homme');
+    };
+}
+//fonction permettant de traduire le genre pour le front
+function myGenre()
+{
+    if ($_COOKIE['CKugender'] == 'female') {
+        print('une femme');
+    } else {
+        print('un homme');
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -67,17 +86,9 @@ function CKdelete()
 
 
             </div>
-            <div class="mb-3 col-sm-8 col-md-7 col-lg-6 mx-auto d-flex justify-content-center">Vous recherchez <?php if ($_COOKIE['CKsearchGender'] == 'female') {
-                                                                                                                    print('une femme');
-                                                                                                                } else {
-                                                                                                                    print('un homme');
-                                                                                                                } ?>
+            <div class="mb-3 col-sm-8 col-md-7 col-lg-6 mx-auto d-flex justify-content-center">Vous recherchez <?= mySearchGenre() ?>
             </div>
-            <div class="mb-3 col-sm-8 col-md-7 col-lg-6 mx-auto d-flex justify-content-center">Vous êtes <?php if ($_COOKIE['CKugender'] == 'female') {
-                                                                                                                print('une femme');
-                                                                                                            } else {
-                                                                                                                print('un homme');
-                                                                                                            } ?>
+            <div class="mb-3 col-sm-8 col-md-7 col-lg-6 mx-auto d-flex justify-content-center">Vous êtes <?= myGenre() ?>
 
             </div>
         </div>
