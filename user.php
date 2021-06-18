@@ -2,7 +2,8 @@
 
 if (isset($_POST['submit'])) {
     CKdelete();
-}
+    header("Location: ./index.php");
+};
 // Parcourt le tableau des cookies
 function CKdelete()
 {
@@ -76,7 +77,7 @@ function CKdelete()
     </div>
     <form action="user.php" method="post">
         <div class="d-grid gap-2 mx-auto">
-            <a href="./index.php"><button class="btn btn-primary d-grid gap-2 mx-auto" type="submit" name="submit">Effacer toutes traces</button></a>
+            <button class="btn btn-primary d-grid gap-2 mx-auto" type="submit" name="submit">Effacer toutes traces</button>
             <a href="https://imgur.com/Gc7IFzZ"><button class="btn btn-primary d-grid gap-2  mx-auto" type="button">Shut up and take my money</button></a>
         </div>
     </form>
