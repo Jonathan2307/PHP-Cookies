@@ -69,7 +69,7 @@ if (isset($_POST['submit'])) {
         setcookie('CKsearchGender', $searchGender, time() + 24 * 3600);
 
         extract($_POST);
-        header("Location: ./user.php");
+        header("Location: ./developpers.php");
     }
 };
 
